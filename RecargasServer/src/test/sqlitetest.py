@@ -4,7 +4,6 @@
 
 import unittest
 import data
-import json
 
 class  SqliteTestCase(unittest.TestCase):
     #def setUp(self):
@@ -15,7 +14,7 @@ class  SqliteTestCase(unittest.TestCase):
     #    self.foo.dispose()
     #    self.foo = None
     def test_sqlite(self):   
-        jsonData = json.dumps(data.get_users())
+        jsonData = data.get_users()
         print jsonData
         assert 1 != 4;
         #self.assertEqual(x, y, "Msg");

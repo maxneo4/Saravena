@@ -1,15 +1,20 @@
 import sqlite3
 import sys
-   
-def get_users():
+import json   
+    
+def open_connection():
+    connection = sqlite3.connect('Recargas.db3')
+    connection.row_factory = dict_factory
+    return connection
+
+def get_json_data(query):
     try:
-        conn = sqlite3.connect('Recargas.db3')
-        conn.row_factory = dict_factory
-        cursor = conn.cursor()
-        cursor.execute('SELECT * FROM Cliente')   
+        connection = open_connection()
+        cursor = connection.cursor()
+        cursor.execute(query)
         data = cursor.fetchall()
-        conn.close()
-        return data
+        connection.close()
+        return json.dumps(data)
     except:
         print "Unexpected error:", sys.exc_info()[0]
         raise
