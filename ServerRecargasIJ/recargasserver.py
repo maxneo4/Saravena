@@ -2,6 +2,7 @@ from flask import Flask, request
 import data_clients
 import data_providers
 import data_movements
+from business.movements import process_movement
 
 app = Flask(__name__)
 
@@ -23,7 +24,7 @@ def movements():
 
 @app.route('/movement', methods=['POST'])
 def add_movement():
-    return data_movements.insert(request.json)    
+    return process_movement(request.json)
 
 if __name__ == "__main__":
     app.run()
