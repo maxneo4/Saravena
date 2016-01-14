@@ -3,7 +3,7 @@
 # and open the template in the editor.
 
 import unittest
-import data_movements
+import data_clients
 import data
 
 import sqlite3
@@ -17,16 +17,10 @@ class  SqliteTestCase(unittest.TestCase):
     #def tearDown(self):
     #    self.foo.dispose()
     #    self.foo = None
-    def test_sqlite(self):   
+    def test_operate_balance(self):
         #data_movements.insert('request.json')
         print 'jsonData'
-        assert 1 != 4;
-        #self.assertEqual(x, y, "Msg");
-        con = sqlite3.connect("Recargas.db3")
-        cur = con.cursor()
-        cur.execute('INSERT INTO MOVIMIENTO(fecha, codigo_asociado) VALUES (?, ?)', ('2016-01-07', '500') )
-        con.commit()
-        con.close()
+        data_clients.operate_balance('2551212', 250)
         
     def test_insertion(self):
         data.insert_json_data('INSERT INTO MOVIMIENTO(fecha, codigo_asociado) VALUES (?, ?)', ('2016-01-07', '840') )

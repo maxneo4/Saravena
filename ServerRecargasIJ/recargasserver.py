@@ -9,7 +9,7 @@ app = Flask(__name__)
 def home_page():
     return "HOME PAGE"
 
-@app.route("/users")
+@app.route("/clients")
 def users():
     return data_clients.get_all()
 
