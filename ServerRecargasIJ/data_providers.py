@@ -1,9 +1,10 @@
-import data
+from data_core.data import get_json_data, get_data, update_data
+from data_core.data_values import DataValues
+
+data_values = DataValues('PROVEEDOR', 'SALDO', 'CODIGO')
 
 def get_all():
-    return data.get_json_data('SELECT * FROM PROVEEDOR')
+    return get_json_data('SELECT * FROM PROVEEDOR')
 
 def operate_balance(provider_code, value_movement):
-    data_client = data.get_data('SELECT SALDO FROM PROVEEDOR WHERE CODIGO = ?', (provider_code,))
-    new_balance = data_client[0]["saldo"] + value_movement
-    data.update_data("UPDATE PROVEEDOR SET SALDO = ? WHERE CODIGO = ?", (new_balance, provider_code))
+    data_values.operate_balance(provider_code, value_movement)
