@@ -1,8 +1,11 @@
 from data_core.data import get_json_data, insert_json_data
+from data_core.data_values import DataValues
 import time
 
+data_values_movement = DataValues('MOVIMIENTO', 'NUMERO')
+
 def get_all():
-    return get_json_data('SELECT * FROM MOVIMIENTO')
+    return data_values_movement.get_all_json_data()
 
 def insert(movement):
     verificado = movement.get('verificado', False)
