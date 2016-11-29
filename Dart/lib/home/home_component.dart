@@ -1,5 +1,6 @@
 import 'package:angular2/core.dart';
 import 'package:angular2_rbi/directives.dart';
+import 'package:zonar/services/user.ConfigurationService.dart';
 //import 'package:zonar/app_component.dart';
 
 @Component(
@@ -10,13 +11,19 @@ import 'package:angular2_rbi/directives.dart';
       MaterialMenu,
       MaterialLayout,      
       MaterialSpinner
-  ])
+  ],providers: const[UserConfigurationService]
+  )
 
 class HomeComponent implements OnInit
 {
    
+  final UserConfigurationService userConfigurationService;
+
+  HomeComponent(this.userConfigurationService);
+
   @override
   ngOnInit() {
+    this.userConfigurationService.fetchDoneController.add('home path');
     //app.menuAvaliable = true;
   }
 }

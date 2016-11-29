@@ -7,7 +7,10 @@ import 'package:angular2_rbi/directives.dart';
 import 'package:angular2/router.dart';
 import 'providers/provider_component.dart';
 import 'reports/report_component.dart';
+import 'services/user.ConfigurationService.dart';
 import 'updates/update_component.dart';
+
+import 'dart:html';
 
 @Component(
     selector: 'my-app',
@@ -20,7 +23,7 @@ import 'updates/update_component.dart';
       MaterialLayout,      
       MaterialSpinner  
     ],
-    providers: const[ROUTER_PROVIDERS]
+    providers: const[ROUTER_PROVIDERS, UserConfigurationService]
     )
 
 @RouteConfig(const [  
@@ -64,5 +67,19 @@ import 'updates/update_component.dart';
 
 class AppComponent
 {
-     
+     String title = 'Menu initial';
+
+     final UserConfigurationService userConfigurationService;
+
+     AppComponent(this.userConfigurationService)
+     {       
+       userConfigurationService.fetchDone.listen((_)=> handle());
+     }
+
+     handle()
+     {
+       title = 'data.toString()';
+       window.alert(title);
+     }
+     //http://stackoverflow.com/questions/15717681/dart-how-to-create-listen-and-emits-custom-event
 }
