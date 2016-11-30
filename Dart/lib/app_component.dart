@@ -10,8 +10,6 @@ import 'reports/report_component.dart';
 import 'services/user.ConfigurationService.dart';
 import 'updates/update_component.dart';
 
-import 'dart:html';
-
 @Component(
     selector: 'my-app',
     templateUrl: 'app.component.html',
@@ -65,21 +63,26 @@ import 'dart:html';
     )
 ])
 
-class AppComponent
+class AppComponent implements OnInit
 {
-     String title = 'Menu initial';
+     String title = '...';
+     bool showMenu = false;
 
      final UserConfigurationService userConfigurationService;
 
      AppComponent(this.userConfigurationService)
      {       
-       userConfigurationService.fetchDone.listen((_)=> handle());
+       
      }
 
-     handle()
+     handle(String s)
      {
-       title = 'data.toString()';
-       window.alert(title);
+       title = s;
+       showMenu = true;
      }
      //http://stackoverflow.com/questions/15717681/dart-how-to-create-listen-and-emits-custom-event
+  @override
+  ngOnInit() {
+        userConfigurationService.fetchDone.listen((String s)=> handle(s));
+  }
 }

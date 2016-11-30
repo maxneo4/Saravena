@@ -2,6 +2,7 @@ import 'package:angular2/core.dart';
 import 'package:angular2_rbi/directives.dart';
 import 'package:zonar/services/user.ConfigurationService.dart';
 //import 'package:zonar/app_component.dart';
+import 'dart:html';
 
 @Component(
     selector: 'my-home',
@@ -22,8 +23,7 @@ class HomeComponent implements OnInit
   HomeComponent(this.userConfigurationService);
 
   @override
-  ngOnInit() {
-    this.userConfigurationService.fetchDoneController.add('home path');
-    //app.menuAvaliable = true;
+  ngOnInit() {    
+    userConfigurationService.controller.add('Menu');    
   }
 }

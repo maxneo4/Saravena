@@ -4,7 +4,9 @@ import 'dart:async';
 @Injectable()
 class UserConfigurationService
 {
-   StreamController fetchDoneController = new StreamController.broadcast();
+   static final StreamController fetchDoneController = new StreamController.broadcast();
 
    Stream get fetchDone => fetchDoneController.stream;
+
+   StreamController get controller => fetchDoneController;
 }
