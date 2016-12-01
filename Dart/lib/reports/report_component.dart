@@ -12,6 +12,5 @@ import 'package:angular2_rbi/directives.dart';
   ])
 
 class ReportComponent
-{
-   
+{   
 }

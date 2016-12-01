@@ -8,9 +8,9 @@
       </nav>
     </div>
   </header>
-  <div *ngIf="showMenu" class="mdl-layout__drawer">
+  <div class="mdl-layout__drawer">
     <span class="mdl-layout__title">{{title}}</span>
-    <nav class="mdl-navigation">
+    <nav *ngIf="showMenu" class="mdl-navigation">
       <a class="mdl-navigation__link" [routerLink]="['Update']">Actualizacion</a>
       <a class="mdl-navigation__link" [routerLink]="['Reports']">Reportes</a>
       <a class="mdl-navigation__link" [routerLink]="['Provider']">Proveedores</a>

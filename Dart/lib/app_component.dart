@@ -1,6 +1,6 @@
 import 'Payes/pay_component.dart';
 import 'home/home_component.dart';
-import 'login_component.dart';
+import 'login/login_component.dart';
 import 'package:angular2/core.dart';
 import 'package:angular2_rbi/directives.dart';
 
